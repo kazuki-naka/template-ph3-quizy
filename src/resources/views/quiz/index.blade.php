@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if($id == 1)
     <title>ガチで東京の人しか解けない！＃東京の難読地名クイズ</title>
+    @else
+    <title>ガチで広島の人しか解けない！＃広島の難読地名クイズ</title>
+    @endif
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <style>
         h1{
@@ -31,14 +35,22 @@
 </head>
 <body>
     <div class="quizy-container" id="quizy-container">
+        @if($id == 1)
         <h1>ガチで東京の人しか解けない！ #東京の難読地名クイズ</h1>
+        @else
+        <h1>ガチで広島の人しか解けない！ #広島の難読地名クイズ</h1>
+        @endif
         <h2 class="question">1.この地名はなんて読む？</h2>
-        <img src="{{ asset('/img/takanawa.png') }}" alt="高輪">
-        <ul class="quizy-selection" id="selection1">
-            <li class="choice" id="true">たかなわ</li>
-            <li class="choice" id="false1-1">たかわ</li>
-            <li class="choice" id="false1-2">こうわ</li>
+        @if($id == 1)
+        <img src="{{ asset('img/takanawa.png') }}" alt="高輪">
+        @else
+        <img src="{{ asset('img/mukainada.png') }}" alt="向洋">
+        @endif
+        @for($i = ($id - 1)*3;$i < $id * 3;$i++)
+        <ul class="quizy-selection">
+            <li class="choice">{{$choice[$i]}}</li>
         </ul>
+        @endfor
     </div>
 </body>
 </html>

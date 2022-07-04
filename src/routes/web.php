@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/quiz/1', 'QuizyController@index');
+Route::get('/quiz/{id?}', 'QuizyController@index');
