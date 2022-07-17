@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @if($id == 1)
-    <title>ガチで東京の人しか解けない！＃東京の難読地名クイズ</title>
-    @else
-    <title>ガチで広島の人しか解けない！＃広島の難読地名クイズ</title>
-    @endif
+    <title>ガチで{{$big_questions->name}}の人しか解けない！＃{{$big_questions->name}}の難読地名クイズ</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
     <style>
         h1{
@@ -35,22 +31,16 @@
 </head>
 <body>
     <div class="quizy-container" id="quizy-container">
-        @if($id == 1)
-        <h1>ガチで東京の人しか解けない！ #東京の難読地名クイズ</h1>
-        @else
-        <h1>ガチで広島の人しか解けない！ #広島の難読地名クイズ</h1>
-        @endif
-        <h2 class="question">1.この地名はなんて読む？</h2>
-        @if($id == 1)
-        <img src="{{ asset('img/takanawa.png') }}" alt="高輪">
-        @else
-        <img src="{{ asset('img/mukainada.png') }}" alt="向洋">
-        @endif
-        @for($i = ($id - 1)*3;$i < $id * 3;$i++)
+        <h1>ガチで{{ $big_questions->name }}の人しか解けない！ #{{ $big_questions->name }}の難読地名クイズ</h1>
+        @foreach($questions as $question)
+        <h2 class="question">{{ $loop->index+1 }}.この地名はなんて読む？</h2>
+        <img src="{{ asset('img/' . $question->image)}}" alt="地名">
         <ul class="quizy-selection">
-            <li class="choice">{{$choice[$i]}}</li>
+            @foreach($choices->where('question_id',$question->id) as $choice)
+            <li class="choice">{{ $choice->name }}</li>
+            @endforeach
         </ul>
-        @endfor
+        @endforeach
     </div>
 </body>
 </html>
