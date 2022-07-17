@@ -14,21 +14,19 @@ class CreateQuizyTable extends Migration
     public function up()
     {
         Schema::create('quizy', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedInteger('id');
             $table->timestamps();
         });
 
         Schema::create('big_questions', function(Blueprint $table){
             $table->increments('id');
             $table->string('name');
-            $table->timestamps();
         });
 
         Schema::create('questions', function(Blueprint $table){
             $table->increments('id');
             $table->integer('big_question_id');
             $table->string('image');
-            $table->timestamps();
         });
 
         Schema::create('choices', function(Blueprint $table){
@@ -36,7 +34,6 @@ class CreateQuizyTable extends Migration
             $table->integer('question_id');
             $table->string('name');
             $table->integer('valid');
-            $table->timestamps();
         });
     }
 
