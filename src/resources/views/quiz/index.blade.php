@@ -15,11 +15,16 @@
         <h2 class="question">{{ $loop->index+1 }}.この地名はなんて読む？</h2>
         <img src="{{ asset('img/' . $question->image)}}" alt="地名">
         <ul class="quizy-selection">
-            @foreach($choices->where('question_id',$question->id)->where('valid', 1) as $choice)
+            @foreach($choices_list as $choices)
+            @foreach($choices->getChoice as $choice)
+            @if($question->id == $choice->question_id)
+            @if($choice->valid == 1)
             <li class="choice" id={{ 'true' . ($choice->question_id-1) }}>{{ $choice->name }}</li>
-            @endforeach
-            @foreach($choices->where('question_id',$question->id)->where('valid', 0) as $choice)
+            @else
             <li class="choice" id={{ 'false' . ($choice->question_id-1) . '-' . ($loop->index+1) }}>{{ $choice->name }}</li>
+            @endif
+            @endif
+            @endforeach
             @endforeach
         </ul>
         <div class="result-box" id="{{ 'result-box' .  $loop->index }}">
