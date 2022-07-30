@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/quiz/{id?}', 'QuizyController@index');
+Route::get('/quiz/{id?}', 'QuizyController');
 Route::get('/', function () {
     return view('quiz.main');
 });
