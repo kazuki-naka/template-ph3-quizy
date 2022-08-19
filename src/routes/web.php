@@ -16,9 +16,14 @@ Route::get('/', function () {
 });
 
 Route::get('/quiz/{id?}', 'QuizyController@index');
-Route::get('/main', function () {
-    return view('quiz.main');
-});
-Auth::routes();
+Route::get('/main', 'QuizyController@main');
 
+Route::get('/add', 'QuizyController@add');
+Route::post('/add', 'QuizyController@create');
+
+if(isset($_POST['delete'])){
+    Route::post('/main', 'QuizyController@delete');
+}
+
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

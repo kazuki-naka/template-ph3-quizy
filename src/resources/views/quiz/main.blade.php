@@ -7,7 +7,16 @@
     <title>地名クイズトップページ</title>
 </head>
 <body>
-    <a href="{{ url('/quiz/1') }}">東京の難読地名クイズ</a>
-    <a href="{{ url('/quiz/2') }}">広島の難読地名クイズ</a>
+    <ul>
+        @foreach($big_questions as $big_question)
+        <form method="post">
+            @csrf
+            <li><a href="{{ url('/quiz/' . $big_question->id) }}">{{ $big_question->name }}の難読地名クイズ</a></li>
+            <input type="submit" name="delete" value="削除">
+            <input type="submit" name="update" value="変更">
+        </form>
+        @endforeach
+    </ul>
+    <a href="{{ url('/add') }}">追加</a>
 </body>
 </html>

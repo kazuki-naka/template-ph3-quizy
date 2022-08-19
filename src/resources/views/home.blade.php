@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in!
+                    <br>
+                    <a href="{{ url('/main') }}">難読地名クイズはこちら</a>
                 </div>
             </div>
         </div>
