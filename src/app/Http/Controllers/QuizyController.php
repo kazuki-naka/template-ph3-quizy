@@ -34,8 +34,15 @@ class QuizyController extends Controller
     }
 
     public function delete(Request $request){
-        Prefecture::where('name', $request->name)->delete();
+        Prefecture::where('name', )->delete();
         return redirect('/main');
     }
-    
+
+    public function edit(Request $request){
+        return view('edit');
+    }
+
+    // public function update(Request $request){
+        
+    // }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,9 +12,9 @@
         <form method="post">
             @csrf
             <li><a href="{{ url('/quiz/' . $big_question->id) }}">{{ $big_question->name }}の難読地名クイズ</a></li>
-            <input type="submit" name="delete" value="削除">
-            <input type="submit" name="update" value="変更">
+            <input type="submit" value="削除">
         </form>
+        <a href="{{ url('/edit') }}">変更</a>
         @endforeach
     </ul>
     <a href="{{ url('/add') }}">追加</a>
