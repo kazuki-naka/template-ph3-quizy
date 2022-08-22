@@ -10,6 +10,7 @@
     <form action="/edit" method="post">
         @csrf
         <input type="text" name="name">
+        <input type="hidden" value="{{ $id }}" name="selected_id">
         <input type="submit" value="変更">
     </form>
 </body>

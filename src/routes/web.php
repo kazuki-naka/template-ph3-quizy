@@ -17,13 +17,16 @@ Route::get('/', function () {
 
 Route::get('/quiz/{id?}', 'QuizyController@index');
 Route::get('/main', 'QuizyController@main');
-Route::post('/main', 'Quizycontroller@delete');
+if($_POST['delete']){
+    Route::post('/main', 'Quizycontroller@delete');
+}else{
+    Route::post('/main', 'Quizycontroller@edit');
+}
 
 Route::get('/add', 'QuizyController@add');
 Route::post('/add', 'QuizyController@create');
 
-// Route::get('/edit', 'QuizyController@edit');
-// Route::post('/edit', 'QuizyController@update');
+Route::get('/edit', 'QuizyController@update');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

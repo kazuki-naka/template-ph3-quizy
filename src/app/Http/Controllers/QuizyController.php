@@ -39,10 +39,16 @@ class QuizyController extends Controller
     }
 
     public function edit(Request $request){
-        return view('edit');
+        $id = $request->big_question_id;
+        var_dump($id);
+        return view('edit', compact('id'));
     }
 
-    // public function update(Request $request){
-        
-    // }
+    public function update(Request $request){
+        var_dump($request->selected_id);
+        $update_data = Prefecture::find($request->selected_id);
+        $update_data->name = $request->name;
+        $update_data->save();
+        return redirect('/main');
+    }
 }
