@@ -11,7 +11,8 @@
         @foreach($big_questions as $big_question)
         <form method="post">
             @csrf
-            <li><a href="{{ url('/quiz/' . $big_question->id) }}">{{ $big_question->name }}の難読地名クイズ</a></li>
+            {{-- <li><a href="{{ url('/quiz/' . $big_question->id) }}">{{ $big_question->name }}の難読地名クイズ</a></li> --}}
+            <li><input type="hidden" value="{{ $big_question->id }}" name="big_question_id">{{ $big_question->name }}の難読地名クイズ</li>
             <input type="submit" value="削除">
         </form>
         <a href="{{ url('/edit') }}">変更</a>

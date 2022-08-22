@@ -22,8 +22,8 @@ Route::post('/main', 'Quizycontroller@delete');
 Route::get('/add', 'QuizyController@add');
 Route::post('/add', 'QuizyController@create');
 
-Route::get('/edit', 'QuizyController@edit');
-Route::post('/edit', 'QuizyController@update');
+// Route::get('/edit', 'QuizyController@edit');
+// Route::post('/edit', 'QuizyController@update');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

@@ -34,7 +34,7 @@ class QuizyController extends Controller
     }
 
     public function delete(Request $request){
-        Prefecture::where('name', )->delete();
+        Prefecture::find($request->big_question_id)->delete();
         return redirect('/main');
     }
 
