@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/quiz/{id?}', 'QuizyController@index');
 Route::get('/main', 'QuizyController@main');
-if($_POST['delete']){
+if(isset($_POST['delete'])){
     Route::post('/main', 'Quizycontroller@delete');
 }else{
     Route::post('/main', 'Quizycontroller@edit');
@@ -26,7 +26,7 @@ if($_POST['delete']){
 Route::get('/add', 'QuizyController@add');
 Route::post('/add', 'QuizyController@create');
 
-Route::get('/edit', 'QuizyController@update');
+Route::post('/edit', 'QuizyController@update');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
