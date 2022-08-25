@@ -8,6 +8,7 @@ use App\Picture;
 class Choice extends Model
 {
     protected $table = 'choices';
+    public $timestamps = false;
 
     public function getPicture(){
         return $this->belongsTo(Picture::class, 'id');

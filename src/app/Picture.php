@@ -9,6 +9,7 @@ use App\Prefecture;
 class Picture extends Model
 {
     protected $table = 'questions';
+    public $timestamps = false;
 
     public function getChoice(){
         return $this->hasMany(Choice::class, 'question_id');
