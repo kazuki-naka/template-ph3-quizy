@@ -1,0 +1,9 @@
+.drag-list li {
+    display: block;
+    border: 1px solid #ebebeb;
+    width:fit-content;
+    padding: 13px;
+    margin: 10px 0;
+    font-weight: 600;
+    cursor: pointer;
+}
