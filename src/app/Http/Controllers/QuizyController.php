@@ -28,8 +28,7 @@ class QuizyController extends Controller
     }
 
     public function create(Request $request){
-        $param = ['name' => $request->name];
-        DB::insert('insert into big_questions(name) values(:name)', $param);
+        Prefecture::create(['name' => $request->name]);
         return redirect('/main');
     }
 
